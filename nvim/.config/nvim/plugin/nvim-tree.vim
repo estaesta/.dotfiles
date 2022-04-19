@@ -1,5 +1,4 @@
-let g:nvim_tree_indent_markers = 1
-let g:nvim_tree_quit_on_open = 1
+" let g:nvim_tree_indent_markers = 1
 let g:nvim_tree_git_hl = 1
 " let g:nvim_tree_show_icons = {
 "     \ 'git': 1,
@@ -42,7 +41,7 @@ require'nvim-tree'.setup {
   hijack_netrw        = true,
   open_on_setup       = false,
   ignore_ft_on_setup  = {},
-  auto_close          = true,
+  -- auto_close          = true,
   open_on_tab         = false,
   hijack_cursor       = false,
   update_cwd          = false,
@@ -93,6 +92,16 @@ require'nvim-tree'.setup {
   trash = {
     cmd = "trash",
     require_confirm = true
+  },
+  actions = {
+      open_file = {
+          quit_on_open = true
+      }
+  },
+  renderer = {
+      indent_marker = {
+          enable = true
+      }
   }
 }
 EOF

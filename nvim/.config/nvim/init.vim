@@ -4,7 +4,7 @@ set expandtab
 set smartindent
 set relativenumber
 set nu
-set timeoutlen=80
+set timeoutlen=500
 set nohlsearch
 set hidden
 set noerrorbells
@@ -12,43 +12,105 @@ set ignorecase
 set smartcase
 set scrolloff=8
 set clipboard=unnamed
-set noswapfile
+" set noswapfile
 set nobackup
 set undodir=~/.vim/undodir
 set undofile
+set cmdheight=1
+set mouse=a
+" set foldmethod=indent
+set nofoldenable
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 
 
 call plug#begin(stdpath('data').'/plugged')
 Plug 'gruvbox-community/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'bling/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
 Plug 'ThePrimeagen/vim-be-good'
+Plug 'tpope/vim-obsession'
+Plug 'numToStr/Comment.nvim'
 
 "telescope
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
+" treesitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'nvim-treesitter/nvim-treesitter-refactor'
+
+" prettier
+Plug 'sbdchd/neoformat'
+
+"HTML
+Plug 'mattn/emmet-vim'
+Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'easymotion/vim-easymotion'
+Plug 'Yggdroot/indentLine'
+Plug 'AndrewRadev/tagalong.vim'
+
+"nvim tree
+" requires
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+
+Plug 'sheerun/vim-polyglot'
+
+
 call plug#end()
 
 let g:airline_poweline_fonts = 1
 
+nnoremap <SPACE> <Nop>
 let mapleader = " "
 imap jk <Esc>
+nnoremap <Leader>+ :vertical resize +5<CR>
+nnoremap <Leader>- :vertical resize -5<CR>
 
 colorscheme gruvbox
 hi Normal guibg=NONE ctermbg=NONE
 
-"" use <tab> for trigger completion and navigate to the next complete item
-"function! s:check_back_space() abort
-"  let col = col('.') - 1
-"  return !col || getline('.')[col - 1]  =~ '\s'
-"endfunction
-"
-"inoremap <silent><expr> <Tab>
-"      \ pumvisible() ? "\<C-n>" :
-"      \ <SID>check_back_space() ? "\<Tab>" :
-"      \ coc#refresh()
-"""""
-
 let g:python3_host_prog = '/bin/python3'
+
+"run python3
+autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+
+" augroup fmt
+"  autocmd!
+"  autocmd BufWritePre * undojoin | Neoformat
+" augroup END
+
+"emmet
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,php EmmetInstall
+let g:user_emmet_leader_key=','
+let g:user_emmet_settings = {
+  \    'php' : {
+  \        'extends' : 'html',
+  \        'filters' : 'html,c',
+  \    },
+  \ }
+
+nmap <c-t> :vs<bar>:b#<CR>
+
+"prettier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+autocmd FileType html setlocal ts=2 sts=2 sw=2
+
+lua require('Comment').setup()
+" let g:bracey_server_allow_remote_connections = 1
+" let g:bracey_server_path = 'http://localhost'
+
+"tagalong
+let g:tagalong_filetypes = ['html']
+
+autocmd Filetype json let g:indentLine_enabled = 0
+
+let php_htmlInString = 1
+let php_folding = 1
+autocmd FileType php setlocal autoindent
