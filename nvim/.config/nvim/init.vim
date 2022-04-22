@@ -31,6 +31,7 @@ Plug 'bling/vim-airline'
 Plug 'ThePrimeagen/vim-be-good'
 Plug 'tpope/vim-obsession'
 Plug 'numToStr/Comment.nvim'
+Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 
 "telescope
 Plug 'nvim-lua/plenary.nvim'
@@ -40,6 +41,7 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 " treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'nvim-treesitter/nvim-treesitter-refactor'
+Plug 'windwp/nvim-ts-autotag'
 
 " prettier
 Plug 'sbdchd/neoformat'
@@ -53,14 +55,24 @@ Plug 'easymotion/vim-easymotion'
 Plug 'Yggdroot/indentLine'
 Plug 'AndrewRadev/tagalong.vim'
 
+"PHP
+" Plug 'phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --no-dev -o'}
+
+" Plug 'phpactor/phpactor', {'for': 'php', 'branch': 'master', 'do': 'composer install --no-scripts --no-dev -o'}
+
 "nvim tree
 " requires
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 
+"language support
 Plug 'sheerun/vim-polyglot'
 
+"auto pair
+Plug 'jiangmiao/auto-pairs'
 
+"indent
+Plug 'tpope/vim-sleuth'
 call plug#end()
 
 let g:airline_poweline_fonts = 1
@@ -87,7 +99,7 @@ autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellesca
 
 "emmet
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,php EmmetInstall
+autocmd FileType html,css,php,blade EmmetInstall
 let g:user_emmet_leader_key=','
 let g:user_emmet_settings = {
   \    'php' : {

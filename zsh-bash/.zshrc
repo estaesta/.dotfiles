@@ -35,7 +35,7 @@ ZSH_THEME="robbyrussell"
  DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+ DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -90,6 +90,8 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
+export VISUAL=nvim;
+export EDITOR=nvim;
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -102,6 +104,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias python=python3
+alias nv=nvim
 
 # nvm
 export NVM_DIR="/home/ddpaud/.nvm"
@@ -115,5 +119,12 @@ eval `dircolors ~/.dircolors`
 
 # windows home shortcut
 export WH="/mnt/c/Users/ahmad"
+export Z="/mnt/c/zData"
+export NVCON="~/.dotfiles/nvim"
 
 hash -d C=/mnt/c
+
+# completion color
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+export DISPLAY=$(ip route|awk '/^default/{print $3}'):0.0

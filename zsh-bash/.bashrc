@@ -133,3 +133,4 @@ export NVM_DIR="$HOME/.nvm"
 
 # export zsh
 source ~/.profile
+PATH="$HOME/.local/bin:$PATH"
