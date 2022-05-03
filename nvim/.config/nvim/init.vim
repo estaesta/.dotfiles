@@ -11,7 +11,8 @@ set noerrorbells
 set ignorecase
 set smartcase
 set scrolloff=8
-set clipboard=unnamed
+"set clipboard=unnamed
+set clipboard+=unnamedplus
 " set noswapfile
 set nobackup
 set undodir=~/.vim/undodir
@@ -126,3 +127,5 @@ autocmd Filetype json let g:indentLine_enabled = 0
 let php_htmlInString = 1
 let php_folding = 1
 autocmd FileType php setlocal autoindent
+
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-blade', 'coc-html', 'coc-emmet', 'coc-html', '@yaegassy/coc-intelephense']
