@@ -20,7 +20,7 @@ set $term kitty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu fuzzel
+set $menu fuzzel -b 000000aa -t ddddddff
 # set $menu wofi --show run
 
 ### Output configuration
@@ -28,7 +28,7 @@ set $menu fuzzel
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/default.png fill
 # output * bg ~/Pictures/FAveUivVQAkrx3K.jfif center
-output * bg ~/windows/Users/ahmad/Pictures/Saved Pictures/FAi30tJVcAE8Xuu.jfif fill
+output * bg ~/windows/Users/ahmad/Pictures/Saved Pictures/1636218268078.png fill
 # exec swaybg -i /home/azazen/Pictures/FAveUivVQAkrx3K.jfif
 #
 # Example configuration:
@@ -71,7 +71,14 @@ exec swayidle -w \
   }
 input "AT_Translated_Set_2_keyboard" {
     xkb_layout us
+    # xkb_variant colemak_dh
+    # xkb_options grp:alts_toggle
 }
+# input "type:keyboard" {
+#     xkb_layout us
+#     xkb_variant colemak_dh
+#     xkb_options grp:alts_toggle
+# }
 
 ### Key bindings
 #
@@ -261,7 +268,7 @@ exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=ssh
 # exec export SSH_AUTH_SOCK
 
 # # font
-font pango:SourceCodePro Medium 13
+font pango:SourceCodePro Medium 11
 # fraction scaling
 exec gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
 

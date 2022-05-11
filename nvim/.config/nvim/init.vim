@@ -84,6 +84,25 @@ imap jk <Esc>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 
+nnoremap th  :tabfirst<CR>
+nnoremap tk  :tabnext<CR>
+nnoremap tj  :tabprev<CR>
+nnoremap tl  :tablast<CR>
+nnoremap tt  :tabedit<Space>
+nnoremap tn  :tabnext<Space>
+nnoremap tm  :tabm<Space>
+nnoremap td  :tabclose<CR>
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
+nnoremap <leader>4 4gt
+nnoremap <leader>5 5gt
+nnoremap <leader>6 6gt
+nnoremap <leader>7 7gt
+nnoremap <leader>8 8gt
+nnoremap <leader>9 9gt
+nnoremap <leader>0 10gt
+
 colorscheme gruvbox
 hi Normal guibg=NONE ctermbg=NONE
 
@@ -109,11 +128,11 @@ let g:user_emmet_settings = {
   \    },
   \ }
 
-nmap <c-t> :vs<bar>:b#<CR>
+" nmap <c-t> :vs<bar>:b#<CR>
 
 "prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-autocmd FileType html setlocal ts=2 sts=2 sw=2
+autocmd FileType "html, js" setlocal ts=2 sts=2 sw=2
 
 lua require('Comment').setup()
 " let g:bracey_server_allow_remote_connections = 1
