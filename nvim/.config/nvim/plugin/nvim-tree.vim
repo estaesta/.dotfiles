@@ -1,34 +1,3 @@
-" let g:nvim_tree_indent_markers = 1
-let g:nvim_tree_git_hl = 1
-" let g:nvim_tree_show_icons = {
-"     \ 'git': 1,
-"     \ 'folders': 0,
-"     \ 'files': 0,
-"     \ 'folder_arrows': 0,
-"     \ }
-let g:nvim_tree_icons = {
-    \ 'default': '',
-    \ 'symlink': '',
-    \ 'git': {
-    \   'unstaged': "✗",
-    \   'staged': "✓",
-    \   'unmerged': "",
-    \   'renamed': "➜",
-    \   'untracked': "★",
-    \   'deleted': "",
-    \   'ignored': "◌"
-    \   },
-    \ 'folder': {
-    \   'arrow_open': "",
-    \   'arrow_closed': "",
-    \   'default': "",
-    \   'open': "",
-    \   'empty': "",
-    \   'empty_open': "",
-    \   'symlink': "",
-    \   'symlink_open': "",
-    \   }
-    \ }
 nnoremap <leader>e :NvimTreeToggle<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
@@ -45,10 +14,10 @@ require'nvim-tree'.setup {
   open_on_tab         = false,
   hijack_cursor       = false,
   update_cwd          = false,
-  update_to_buf_dir   = {
-    enable = true,
-    auto_open = true,
-  },
+  -- update_to_buf_dir   = {
+  --   enable = true,
+  --   auto_open = true,
+  -- },
   diagnostics = {
     enable = false,
     icons = {
@@ -81,7 +50,7 @@ require'nvim-tree'.setup {
     height = 30,
     hide_root_folder = false,
     side = 'left',
-    auto_resize = false,
+    -- auto_resize = false,
     mappings = {
       custom_only = false,
       list = {}
@@ -99,9 +68,10 @@ require'nvim-tree'.setup {
       }
   },
   renderer = {
-      indent_marker = {
+      indent_markers = {
           enable = true
-      }
+      },
+    highlight_git = true
   }
 }
 EOF

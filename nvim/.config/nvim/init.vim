@@ -28,11 +28,19 @@ set foldexpr=nvim_treesitter#foldexpr()
 call plug#begin(stdpath('data').'/plugged')
 Plug 'gruvbox-community/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'natebosch/dartlang-snippets'
 Plug 'bling/vim-airline'
 Plug 'ThePrimeagen/vim-be-good'
 Plug 'tpope/vim-obsession'
 Plug 'numToStr/Comment.nvim'
 Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+Plug 'lambdalisue/suda.vim'
+Plug 'akinsho/toggleterm.nvim'
+Plug 'norcalli/nvim-colorizer.lua'
+" Plug 'github/copilot.vim'
+Plug 'pope/vim-fugitive'
 
 "telescope
 Plug 'nvim-lua/plenary.nvim'
@@ -53,13 +61,10 @@ Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'easymotion/vim-easymotion'
-Plug 'Yggdroot/indentLine'
+
+" Plug 'Yggdroot/indentLine'
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'AndrewRadev/tagalong.vim'
-
-"PHP
-" Plug 'phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --no-dev -o'}
-
-" Plug 'phpactor/phpactor', {'for': 'php', 'branch': 'master', 'do': 'composer install --no-scripts --no-dev -o'}
 
 "nvim tree
 " requires
@@ -70,13 +75,21 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'sheerun/vim-polyglot'
 
 "auto pair
-Plug 'jiangmiao/auto-pairs'
+Plug 'windwp/nvim-autopairs'
 
 "indent
 Plug 'tpope/vim-sleuth'
+
+"flutter dart
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'Neevash/awesome-flutter-snippets'
+
+"require luarocks lyaml
+Plug 'akinsho/pubspec-assist.nvim'
+Plug 'theHamsta/nvim_rocks', {'do': 'pip3 install --user hererocks && python3 -mhererocks . -j2.1.0-beta3 -r3.0.0 && cp nvim_rocks.lua lua'}
 call plug#end()
 
-let g:airline_poweline_fonts = 1
+let g:airline_powerline_fonts = 1
 
 nnoremap <SPACE> <Nop>
 let mapleader = " "
@@ -134,14 +147,20 @@ let g:user_emmet_settings = {
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 autocmd FileType "html, js" setlocal ts=2 sts=2 sw=2
 
-lua require('Comment').setup()
+
+lua << EOF
+require('Comment').setup()
+require("nvim-autopairs").setup {}
+require('pubspec-assist').setup()
+EOF
 " let g:bracey_server_allow_remote_connections = 1
 " let g:bracey_server_path = 'http://localhost'
 
 "tagalong
 let g:tagalong_filetypes = ['html']
 
-autocmd Filetype json let g:indentLine_enabled = 0
+" autocmd Filetype json let g:indentLine_enabled = 0
+" autocmd Filetype json let g:indentLine_setConceal = 0
 
 let php_htmlInString = 1
 let php_folding = 1
