@@ -27,8 +27,8 @@ set $menu fuzzel -b 000000aa -t ddddddff
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/default.png fill
-# output * bg ~/Pictures/FAveUivVQAkrx3K.jfif center
-output * bg ~/windows/Users/ahmad/Pictures/Saved Pictures/1636218268078.png fill
+# output * bg ~/Pictures/Screenshot from 2022-05-08 17-54-55.png fill
+output * bg ~/windows/Users/ahmad/Pictures/Saved Pictures/yuka smug.png fill
 # exec swaybg -i /home/azazen/Pictures/FAveUivVQAkrx3K.jfif
 #
 # Example configuration:
@@ -196,6 +196,9 @@ input "AT_Translated_Set_2_keyboard" {
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+
+    # Move focus to the child container
+    bindsym $mod+c focus parent
 #
 # Scratchpad:
 #

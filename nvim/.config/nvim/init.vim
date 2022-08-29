@@ -19,19 +19,22 @@ set undodir=~/.vim/undodir
 set undofile
 set cmdheight=1
 set mouse=a
-" set foldmethod=indent
+set foldmethod=indent
 set nofoldenable
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
+" set foldmethod=expr
+" set foldexpr=nvim_treesitter#foldexpr()
 
 
 call plug#begin(stdpath('data').'/plugged')
 Plug 'gruvbox-community/gruvbox'
+Plug 'luisiacc/gruvbox-baby', {'branch': 'main'}
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
 Plug 'natebosch/dartlang-snippets'
-Plug 'bling/vim-airline'
+" Plug 'bling/vim-airline'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'ThePrimeagen/vim-be-good'
 Plug 'tpope/vim-obsession'
 Plug 'numToStr/Comment.nvim'
@@ -39,8 +42,10 @@ Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'lambdalisue/suda.vim'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'norcalli/nvim-colorizer.lua'
-" Plug 'github/copilot.vim'
-Plug 'pope/vim-fugitive'
+Plug 'github/copilot.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'karb94/neoscroll.nvim'
+" Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 "telescope
 Plug 'nvim-lua/plenary.nvim'
@@ -60,7 +65,9 @@ Plug 'mattn/emmet-vim'
 Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
+Plug 'phaazon/hop.nvim'
+
 
 " Plug 'Yggdroot/indentLine'
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -87,9 +94,12 @@ Plug 'Neevash/awesome-flutter-snippets'
 "require luarocks lyaml
 Plug 'akinsho/pubspec-assist.nvim'
 Plug 'theHamsta/nvim_rocks', {'do': 'pip3 install --user hererocks && python3 -mhererocks . -j2.1.0-beta3 -r3.0.0 && cp nvim_rocks.lua lua'}
+
+"dashboard
+Plug 'glepnir/dashboard-nvim'
 call plug#end()
 
-let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1
 
 nnoremap <SPACE> <Nop>
 let mapleader = " "
@@ -117,6 +127,8 @@ nnoremap <leader>9 9gt
 nnoremap <leader>0 10gt
 
 colorscheme gruvbox
+let g:tokyonight_style = "night"
+
 hi Normal guibg=NONE ctermbg=NONE
 
 let g:python3_host_prog = '/bin/python3'
@@ -145,13 +157,15 @@ let g:user_emmet_settings = {
 
 "prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-autocmd FileType "html, js" setlocal ts=2 sts=2 sw=2
+autocmd FileType html,javascript,xhtml,xml,css setlocal ts=2 sts=2 sw=2
 
 
 lua << EOF
 require('Comment').setup()
-require("nvim-autopairs").setup {}
+require("nvim-autopairs").setup()
 require('pubspec-assist').setup()
+require("neoscroll").setup()
+require("hop").setup()
 EOF
 " let g:bracey_server_allow_remote_connections = 1
 " let g:bracey_server_path = 'http://localhost'
@@ -167,3 +181,4 @@ let php_folding = 1
 autocmd FileType php setlocal autoindent
 
 let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-blade', 'coc-html', 'coc-emmet', 'coc-html', '@yaegassy/coc-intelephense']
+

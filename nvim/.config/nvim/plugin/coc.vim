@@ -138,3 +138,6 @@ let g:coc_snippet_next = '<tab>'
 let g:dart_lang_server = '~/software/flutter/bin/cache/dart-sdk/bin/snapshots/analysis_server.dart.snapshot'
 
 " coc-flutter-tools
+
+"node
+let g:coc_node_path = '/home/azazen/.nvm/versions/node/v16.17.0/bin/node'
