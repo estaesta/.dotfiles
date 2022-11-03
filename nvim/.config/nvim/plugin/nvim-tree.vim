@@ -7,7 +7,7 @@ set termguicolors
 lua << EOF
 require'nvim-tree'.setup {
   disable_netrw       = true,
-  hijack_netrw        = true,
+  hijack_netrw        = false,
   open_on_setup       = false,
   ignore_ft_on_setup  = {},
   -- auto_close          = true,
@@ -46,7 +46,7 @@ require'nvim-tree'.setup {
     timeout = 500,
   },
   view = {
-    width = 20,
+    width = 25,
     height = 30,
     hide_root_folder = false,
     side = 'left',

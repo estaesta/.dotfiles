@@ -10,8 +10,8 @@ set hidden
 set noerrorbells
 set ignorecase
 set smartcase
-set scrolloff=8
-"set clipboard=unnamed
+set scrolloff=10
+" set clipboard=unnamed
 set clipboard+=unnamedplus
 " set noswapfile
 set nobackup
@@ -25,10 +25,12 @@ set nofoldenable
 " set foldexpr=nvim_treesitter#foldexpr()
 
 
+
 call plug#begin(stdpath('data').'/plugged')
-Plug 'gruvbox-community/gruvbox'
-Plug 'luisiacc/gruvbox-baby', {'branch': 'main'}
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+" Plug 'gruvbox-community/gruvbox'
+" Plug 'luisiacc/gruvbox-baby', {'branch': 'main'}
+" Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'sainnhe/gruvbox-material'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
@@ -44,7 +46,7 @@ Plug 'akinsho/toggleterm.nvim'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'github/copilot.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'karb94/neoscroll.nvim'
+" Plug 'karb94/neoscroll.nvim'
 " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 "telescope
@@ -96,7 +98,10 @@ Plug 'akinsho/pubspec-assist.nvim'
 Plug 'theHamsta/nvim_rocks', {'do': 'pip3 install --user hererocks && python3 -mhererocks . -j2.1.0-beta3 -r3.0.0 && cp nvim_rocks.lua lua'}
 
 "dashboard
-Plug 'glepnir/dashboard-nvim'
+" Plug 'glepnir/dashboard-nvim'
+
+"tex 
+" Plug 'lervag/vimtex'
 call plug#end()
 
 " let g:airline_powerline_fonts = 1
@@ -126,8 +131,35 @@ nnoremap <leader>8 8gt
 nnoremap <leader>9 9gt
 nnoremap <leader>0 10gt
 
-colorscheme gruvbox
-let g:tokyonight_style = "night"
+" greatest remap
+xnoremap <leader>p "_dP
+
+" let g:gruvbox_baby_transparent_mode = 1
+" colorscheme gruvbox-material
+
+        " Important!!
+        if has('termguicolors')
+          set termguicolors
+        endif
+        " For dark version.
+        set background=dark
+        " For light version.
+        " set background=light
+        " Set contrast.
+        " This configuration option should be placed before `colorscheme gruvbox-material`.
+        " Available values: 'hard', 'medium'(default), 'soft'
+        let g:gruvbox_material_ui_contrast = 'high'
+        let g:gruvbox_material_visual = 'reverse'
+        let g:gruvbox_material_foreground = 'original'
+        let g:gruvbox_material_transparent_background = 1
+        let g:gruvbox_material_background = 'hard'
+        let g:gruvbox_material_diagnostic_text_highlight = 1
+        " let g:gruvbox_material_diagnostic_line_highlight = 1
+        " For better performance
+        let g:gruvbox_material_better_performance = 1
+        colorscheme gruvbox-material
+" let &fcs='eob: '
+" let g:tokyonight_style = "night"
 
 hi Normal guibg=NONE ctermbg=NONE
 
@@ -164,7 +196,7 @@ lua << EOF
 require('Comment').setup()
 require("nvim-autopairs").setup()
 require('pubspec-assist').setup()
-require("neoscroll").setup()
+-- require("neoscroll").setup()
 require("hop").setup()
 EOF
 " let g:bracey_server_allow_remote_connections = 1
@@ -181,4 +213,4 @@ let php_folding = 1
 autocmd FileType php setlocal autoindent
 
 let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-blade', 'coc-html', 'coc-emmet', 'coc-html', '@yaegassy/coc-intelephense']
-
+let g:coc_node_path = '/home/azazen/.nvm/versions/node/v19.0.0/bin/node'

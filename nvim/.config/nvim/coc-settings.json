@@ -1,3 +1,4 @@
-{
-  "tsserver.npm": "~/.nvm/versions/node/v16.17.0/bin/npm"
-}
+ {
+   "tsserver.npm": "~/.nvm/versions/node/v19.0.0/bin/npm",
+   "diagnostic.virtualText": true
+ }

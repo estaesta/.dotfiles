@@ -1,4 +1,4 @@
-" Use <c-space> to trigger completion.
+" Use <c-space> to trigger completion.coc
 if has('nvim')
   inoremap <silent><expr> <c-space> coc#refresh()
 else
@@ -48,7 +48,7 @@ augroup mygroup
 augroup end
 
 " Signature help keybind like intellij
-inoremap <C-P> <C-\><C-O>:call CocActionAsync('showSignatureHelp')<cr>
+inoremap <C-h> <C-\><C-O>:call CocActionAsync('showSignatureHelp')<cr>
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
@@ -129,6 +129,9 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "       \ <SID>check_back_space() ? "\<TAB>" :
 "       \ coc#refresh()
 
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm()
+      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
@@ -140,4 +143,14 @@ let g:dart_lang_server = '~/software/flutter/bin/cache/dart-sdk/bin/snapshots/an
 " coc-flutter-tools
 
 "node
-let g:coc_node_path = '/home/azazen/.nvm/versions/node/v16.17.0/bin/node'
+let g:coc_node_path = '/home/azazen/.nvm/versions/node/v19.0.0/bin/node'
+
+" hi CocMenuSel ctermbg=237 guibg=#13354A
+" hi! link CocHighlightText Cursor
+" hi! link CocSemDeclaration GruvboxAqua
+" hi! link CocStrikeThrough Comment
+" hi! link CocUnusedHighlight Comment
+" hi! link CocMenuSel PmenuSel
+" hi! link CocSearch GruvboxYellow
+" hi! link CocFloatDividingLine GruvboxBg3
+" hi! link CocInlayHint Folded
