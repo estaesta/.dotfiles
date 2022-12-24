@@ -1,4 +1,5 @@
-set tabstop=4 softtabstop=4
+set tabstop=4 
+set softtabstop=4
 set shiftwidth=4
 set expandtab
 set smartindent
@@ -32,9 +33,10 @@ call plug#begin(stdpath('data').'/plugged')
 " Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'sainnhe/gruvbox-material'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'natebosch/dartlang-snippets'
+" Plug 'sniphpets/sniphpets-common'
 " Plug 'bling/vim-airline'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'ThePrimeagen/vim-be-good'
@@ -97,11 +99,17 @@ Plug 'Neevash/awesome-flutter-snippets'
 Plug 'akinsho/pubspec-assist.nvim'
 Plug 'theHamsta/nvim_rocks', {'do': 'pip3 install --user hererocks && python3 -mhererocks . -j2.1.0-beta3 -r3.0.0 && cp nvim_rocks.lua lua'}
 
+" documenation
+Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
+
 "dashboard
 " Plug 'glepnir/dashboard-nvim'
 
 "tex 
 " Plug 'lervag/vimtex'
+"
+Plug 'mbbill/undotree'
+
 call plug#end()
 
 " let g:airline_powerline_fonts = 1
@@ -112,6 +120,7 @@ imap jk <Esc>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 
+nnoremap f<leader> f<Space>
 nnoremap th  :tabfirst<CR>
 nnoremap tk  :tabnext<CR>
 nnoremap tj  :tabprev<CR>
@@ -163,11 +172,6 @@ xnoremap <leader>p "_dP
 
 hi Normal guibg=NONE ctermbg=NONE
 
-let g:python3_host_prog = '/bin/python3'
-
-"run python3
-autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 
 " augroup fmt
 "  autocmd!
@@ -188,8 +192,8 @@ let g:user_emmet_settings = {
 " nmap <c-t> :vs<bar>:b#<CR>
 
 "prettier
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-autocmd FileType html,javascript,xhtml,xml,css setlocal ts=2 sts=2 sw=2
+" command! -nargs=0 Prettier :CocCommand prettier.formatFile
+autocmd FileType html,javascript,xhtml,xml,css,blade setlocal ts=2 sts=2 sw=2
 
 
 lua << EOF
@@ -214,3 +218,21 @@ autocmd FileType php setlocal autoindent
 
 let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-blade', 'coc-html', 'coc-emmet', 'coc-html', '@yaegassy/coc-intelephense']
 let g:coc_node_path = '/home/azazen/.nvm/versions/node/v19.0.0/bin/node'
+
+" conda 
+let g:python3_host_prog = '~/.conda/envs/pynvim/bin/python'
+" let g:python3_host_prog = '/bin/python3'
+
+"run python3
+autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+
+" let g:UltiSnipsSnippetDirectories="/home/azazen/.dotfiles/nvim/.config/nvim/UltiSnips"
+let g:UltiSnipsSnippetDirectories = ["~/.config/nvim/snippets"]
+
+function FormatPhpHtml()
+  set filetype=html
+  call feedkeys('ggVG')
+  call feedkeys('=<CR>')
+  " set filetype=php
+endfunction

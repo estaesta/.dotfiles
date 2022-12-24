@@ -128,6 +128,11 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
 "       \ <SID>check_back_space() ? "\<TAB>" :
 "       \ coc#refresh()
+" inoremap <silent><expr> <TAB>
+"       \ coc#pum#visible() ? coc#_select_confirm() :
+"       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"       \ CheckBackspace() ? "\<TAB>" :
+"       \ coc#refresh()
 
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm()
       \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
@@ -143,7 +148,7 @@ let g:dart_lang_server = '~/software/flutter/bin/cache/dart-sdk/bin/snapshots/an
 " coc-flutter-tools
 
 "node
-let g:coc_node_path = '/home/azazen/.nvm/versions/node/v19.0.0/bin/node'
+" let g:coc_node_path = '/home/azazen/.nvm/versions/node/v19.0.0/bin/node'
 
 " hi CocMenuSel ctermbg=237 guibg=#13354A
 " hi! link CocHighlightText Cursor
