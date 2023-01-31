@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$PATH:/home/azazen/.local/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -32,16 +33,16 @@ ZSH_THEME="robbyrussell"
 # zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
- DISABLE_MAGIC_FUNCTIONS="true"
+# DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
- DISABLE_LS_COLORS="true"
+# DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
- ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -70,9 +71,10 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-    git
-    zsh-autosuggestions
+plugins=(git
+zsh-autosuggestions
+tmux
+fzf-zsh-plugin
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -90,8 +92,7 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
-export VISUAL=nvim;
-export EDITOR=nvim;
+export EDITOR='nvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -104,27 +105,58 @@ export EDITOR=nvim;
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias python=python3
-alias nv=nvim
+alias nv="nvim"
+alias TeXstudio="texstudio"
+export WIN="/mnt/7A64B60164B5BFE5/"
 
-# nvm
-export NVM_DIR="/home/ddpaud/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+#jp key
+# export GTK_IM_MODULE=ibus
+# export XMODIFIERS=@im=ibus
+# export QT_IM_MODULE=ibus
+#
 
-# import bash
-[[ -e ~/.profile ]] && emulate sh -c 'source ~/.profile'
+# export GTK_IM_MODULE=xim
+# export XMODIFIERS=@im=ibus
+# export QT_IM_MODULE=xim
 
-## set colors for LS_COLORS
-eval `dircolors ~/.dircolors`
+# export INPUT_METHOD=ibus
+# export SDL_IM_MODULE=ibus
+# export GLFW_IM_MODULE=ibus
 
-# windows home shortcut
-export WH="/mnt/c/Users/ahmad"
-export Z="/mnt/c/zData"
-export NVCON="~/.dotfiles/nvim"
+# ibus-daemon -drxR
+# export PATH="/opt/lampp:$PATH"
+#
 
-hash -d C=/mnt/c
+#export app
+export PATH=$PATH:$HOME/.config/composer/vendor/bin
+export PATH=$PATH:$HOME/Development/flutter/bin/cache/dart-sdk/bin
+export PATH=$PATH:$HOME/Development/flutter/bin
+export ANDROID_HOME=/home/azazen/Development/android/android_sdk
+export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
+export PATH=$ANDROID_HOME/emulator:$PATH
+# export CHROME_EXECUTABLE=/var/lib/flatpak/app/com.brave.Browser/x86_64/stable/354a360eda856961fdd6a707b49cdb9d012824ffbbbd1db22e38a46259f17104/export/bin/com.brave.Browser
 
-# completion color
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export DISPLAY=$(ip route|awk '/^default/{print $3}'):0.0
+alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/usr/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/usr/etc/profile.d/conda.sh" ]; then
+        . "/usr/etc/profile.d/conda.sh"
+    else
+        export PATH="/usr/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+#
+# Where should I put you?
+bindkey -s ^f "tmux-sessionizer\n"

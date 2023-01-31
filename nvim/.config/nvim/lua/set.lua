@@ -32,3 +32,5 @@ vim.opt.colorcolumn = "80"
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
+vim.opt.wrap = true
