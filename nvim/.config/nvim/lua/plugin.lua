@@ -19,14 +19,10 @@ return require('packer').startup(function(use)
 	--    cond = vim.fn.executable 'make' == 1
 	--}
 
-	use({
-		'sainnhe/gruvbox-material',
-		config = function()
-			vim.cmd('colorscheme gruvbox-material')
-		end
-	})
+	use { "ellisonleao/gruvbox.nvim" }
 
 	use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
+	use 'nvim-treesitter/nvim-treesitter-context'
 	use('theprimeagen/harpoon')
 	use('mbbill/undotree')
 
@@ -42,6 +38,7 @@ return require('packer').startup(function(use)
 			{ 'neovim/nvim-lspconfig' },
 			{ 'williamboman/mason.nvim' },
 			{ 'williamboman/mason-lspconfig.nvim' },
+			{ 'https://github.com/folke/neodev.nvim' },
 
 			-- Autocompletion
 			{ 'hrsh7th/nvim-cmp' },
@@ -54,8 +51,11 @@ return require('packer').startup(function(use)
 			-- Snippets
 			{ 'L3MON4D3/LuaSnip' },
 			{ 'rafamadriz/friendly-snippets' },
+			{ 'honza/vim-snippets' },
+			{'onecentlin/laravel-blade-snippets-vscode'},
 		}
 	}
+
 
 	use("folke/zen-mode.nvim")
 	use("github/copilot.vim")
@@ -74,12 +74,12 @@ return require('packer').startup(function(use)
 	use('sheerun/vim-polyglot')
 	use 'tpope/vim-obsession'
 	use 'lambdalisue/suda.vim'
-	use {"akinsho/toggleterm.nvim", tag = '*', config = function()
-	  require("toggleterm").setup()
-	end}
+	use { "akinsho/toggleterm.nvim", tag = '*', config = function()
+		require("toggleterm").setup()
+	end }
 
 	-- HTML
-	use 'mattn/emmet-vim'
+	-- use 'mattn/emmet-vim'
 	-- use 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 	use 'tpope/vim-surround'
 	-- use 'phaazon/hop.nvim'
@@ -92,4 +92,49 @@ return require('packer').startup(function(use)
 	-- flutter dart
 	-- use 'dart-lang/dart-vim-plugin'
 	-- use 'Neevash/awesome-flutter-snippets'
+
+	-- markdown
+	use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
+		setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+
+	-- neoformat
+	use 'sbdchd/neoformat'
+
+	-- vimwiki
+	use 'vimwiki/vimwiki'
+	use 'img-paste-devs/img-paste.vim'
+
+	-- colorizer
+	use 'NvChad/nvim-colorizer.lua'
+	use({
+	  "roobert/tailwindcss-colorizer-cmp.nvim",
+	  -- optionally, override the default options:
+	  config = function()
+		require("tailwindcss-colorizer-cmp").setup({
+		  color_square_width = 2,
+		})
+	  end
+	})
+
+	-- use({
+	--   "jackMort/ChatGPT.nvim",
+	-- 	config = function()
+	-- 	  require("chatgpt").setup()
+	-- 	end,
+	-- 	requires = {
+	-- 	  "MunifTanjim/nui.nvim",
+	-- 	  "nvim-lua/plenary.nvim",
+	-- 	  "nvim-telescope/telescope.nvim"
+	-- 	}
+	-- })
+
+	-- zola
+	use {
+	    "yorik1984/zola.nvim",
+	    requires = {
+		"Glench/Vim-Jinja2-Syntax",
+		-- "cespare/vim-toml",             -- for Neovim ⩽ 0.6.0
+	    }
+	}
+
 end)

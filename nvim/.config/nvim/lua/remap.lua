@@ -41,3 +41,8 @@ vim.keymap.set("n", "th", "<cmd>tabmove -1<CR>")
 vim.keymap.set("n", "tl", "<cmd>tabmove +1<CR>")
 vim.keymap.set("n", "tt", ":tabedit<Space>")
 vim.keymap.set("n", "td", "<cmd>tabclose<CR>")
+
+-- in type markdown or vimwiki, let j = gj and k = gk
+vim.keymap.set("n", "j", "gj")
+vim.keymap.set("n", "k", "gk")
+
