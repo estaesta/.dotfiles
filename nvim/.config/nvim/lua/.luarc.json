@@ -35,5 +35,6 @@
         "/home/azazen/.local/share/nvim/site/pack/packer/start/zen-mode.nvim/lua",
         "/home/azazen/.dotfiles/nvim/.config/nvim/lua",
         "${3rd}/luv/library"
-    ]
+    ],
+    "workspace.checkThirdParty": false
 }

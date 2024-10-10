@@ -46,3 +46,10 @@ vim.keymap.set("n", "td", "<cmd>tabclose<CR>")
 vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "k", "gk")
 
+-- nnoremap <silent> gv :vsplit<CR>gd
+-- make it so that the definition are on the right side
+vim.keymap.set("n", "gv", "<cmd>vsplit<CR><C-w>lgd")
+
+-- close quickfix window and open
+vim.keymap.set("n", "<leader>q", "<cmd>cclose<CR>")
+vim.keymap.set("n", "<leader>Q", "<cmd>copen<CR>")

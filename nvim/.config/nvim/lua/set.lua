@@ -47,3 +47,5 @@ vim.cmd("set nocompatible")
 vim.cmd("filetype plugin on")
 vim.cmd("syntax on")
 
+-- set html 2 spaces
+vim.cmd("autocmd FileType html setlocal shiftwidth=2 tabstop=2")

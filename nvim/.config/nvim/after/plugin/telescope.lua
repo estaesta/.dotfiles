@@ -8,6 +8,6 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Help tags' })
 vim.keymap.set('n', '<leader>fs', builtin.grep_string, { desc = 'Grep string' })
 vim.keymap.set('n', '<leader>fc', builtin.commands, { desc = 'Commands' })
-
+vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = 'Keymaps' })
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
